@@ -20,10 +20,14 @@ import warnings
 @st.cache_resource
 def download_nltk_data():
     """Download required NLTK data files"""
+    # Download punkt_tab (newer version) or punkt (older version)
     try:
-        nltk.data.find('tokenizers/punkt')
+        nltk.data.find('tokenizers/punkt_tab')
     except LookupError:
-        nltk.download('punkt', quiet=True)
+        try:
+            nltk.download('punkt_tab', quiet=True)
+        except:
+            nltk.download('punkt', quiet=True)
     
     try:
         nltk.data.find('corpora/stopwords')
