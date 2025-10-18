@@ -27,7 +27,7 @@ st.set_page_config(
 st.markdown("""
 <style>
     .main {
-        background-color: #f5f5ff;
+        background-color: #f5f5f5;
     }
     h1, h2, h3 {
         color: #2c3e50;
@@ -366,7 +366,7 @@ else:
     
     # Export section
     st.markdown("---")
-    st.subheader("📥 Export Analysis")
+    st.subheader("Export Analysis")
     
     col1, col2 = st.columns(2)
     
@@ -390,11 +390,11 @@ Readability:
 - Avg Sentence Length: {readability['avg_sentence_length']:.1f}
 
 Top Keywords:
-{chr(10).join([f"- {kw}: {count}" for kw, count in list(financial_kw.items())[:5]]) if financial_kw else "None"}
+{chr(10).join([f"- {kw}: {count}" for kw, count in list(financial_kw.items())[:5]])}
         """
         
         st.download_button(
-            "📄 Download Summary",
+            "Download Summary",
             summary,
             "analysis_summary.txt",
             "text/plain"
@@ -405,7 +405,7 @@ Top Keywords:
             fin_df = pd.DataFrame(list(financial_kw.items()), 
                                  columns=['Keyword', 'Frequency'])
             st.download_button(
-                "💼 Download Keywords (CSV)",
+                "Download Keywords (CSV)",
                 fin_df.to_csv(index=False),
                 "keywords.csv",
                 "text/csv"
