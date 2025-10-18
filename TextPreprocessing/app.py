@@ -70,10 +70,20 @@ st.markdown("""
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .stMetric > div {
-        color: #2c3e50; /* Make metric text dark */
+        color: #2c3e50 !important;
     }
     .stMetric > label {
-        color: #555555; /* Make metric label a bit lighter */
+        color: #555555 !important;
+    }
+    .stMetric [data-testid="stMetricValue"] {
+        color: #1a1a1a !important;
+    }
+    .stMetric [data-testid="stMetricLabel"] {
+        color: #4a4a4a !important;
+    }
+    /* Force all text in metric containers to be dark */
+    [data-testid="metric-container"] * {
+        color: #2c3e50 !important;
     }
 </style>
 """, unsafe_allow_html=True)
