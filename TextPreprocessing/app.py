@@ -16,6 +16,33 @@ from sklearn.decomposition import LatentDirichletAllocation
 from collections import Counter
 import warnings
 
+# Download required NLTK data
+@st.cache_resource
+def download_nltk_data():
+    """Download required NLTK data files"""
+    try:
+        nltk.data.find('tokenizers/punkt')
+    except LookupError:
+        nltk.download('punkt', quiet=True)
+    
+    try:
+        nltk.data.find('corpora/stopwords')
+    except LookupError:
+        nltk.download('stopwords', quiet=True)
+    
+    try:
+        nltk.data.find('corpora/wordnet')
+    except LookupError:
+        nltk.download('wordnet', quiet=True)
+    
+    try:
+        nltk.data.find('corpora/omw-1.4')
+    except LookupError:
+        nltk.download('omw-1.4', quiet=True)
+
+# Call the download function
+download_nltk_data()
+
 # Page configuration
 st.set_page_config(
     page_title="Annual Report Analyzer",
@@ -412,4 +439,3 @@ Top Keywords:
             )
     
     st.success("Analysis complete!")
-
